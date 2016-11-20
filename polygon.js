@@ -22,25 +22,13 @@ let pic = gm(width, height, color);
 // coordinate
 let c = new Coordinate(width, height);
 let p = c.createPoit(0, 200);
-let origin = c.createOrigin();
-
-// line
-// pic.stroke("red", 3)
-// .drawLine(p._.x, p._.y, origin._.x, origin._.y);
-
-// rotate
-// p.rotate(2 * pi / 3);
-// pic.stroke("green", 3).drawLine(p._.x, p._.y, origin._.x, origin._.y);
-
-// p.rotate(2 * pi / 3);
-// pic.stroke("blue", 3).drawLine(p._.x, p._.y, origin._.x, origin._.y);
-
 
 // polygon
 for (let i = 1; i <= n; i++) {
-    let old = p;
+    let oldX = p._.x;
+    let oldY = p._.y;
     p.rotate(2 * pi / n);
-    pic.stroke("red", 1).drawLine(origin._.x, origin._.y, p._.x, p._.y);
+    pic.stroke("red", 1).drawLine(oldX, oldY, p._.x, p._.y);
 }
 
 // save
