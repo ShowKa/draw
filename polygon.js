@@ -2,7 +2,7 @@ const l = console.log;
 
 // require
 const gm = require('gm')
-const argv = require("argv");
+const args = require("argv").run().targets;
 
 // lib
 const Coordinate = require("./lib/Coordinate");
@@ -10,21 +10,38 @@ const Coordinate = require("./lib/Coordinate");
 // const 
 const width = 500;
 const height = 500;
+const pi = Math.PI;
 
 // args
-const n = argv.run().targets[0];
+const n = args[0] ? args[0] : 3;
+const color = args[1] ? args[1] : "white";
 
 // image
-const pic = gm(width, height, "white");
+let pic = gm(width, height, color);
 
 // coordinate
-const c = new Coordinate(width, height);
-const p1 = c.createPoit(100, 0);
-const p2 = c.createPoit(-100, 0);
+let c = new Coordinate(width, height);
+let p = c.createPoit(0, 200);
+let origin = c.createOrigin();
 
 // line
-pic.stroke("red", 3)
-    .drawLine(p1._.x, p1._.y, p2._.x, p2._.y);
+// pic.stroke("red", 3)
+// .drawLine(p._.x, p._.y, origin._.x, origin._.y);
+
+// rotate
+// p.rotate(2 * pi / 3);
+// pic.stroke("green", 3).drawLine(p._.x, p._.y, origin._.x, origin._.y);
+
+// p.rotate(2 * pi / 3);
+// pic.stroke("blue", 3).drawLine(p._.x, p._.y, origin._.x, origin._.y);
+
+
+// polygon
+for (let i = 1; i <= n; i++) {
+    let old = p;
+    p.rotate(2 * pi / n);
+    pic.stroke("red", 1).drawLine(origin._.x, origin._.y, p._.x, p._.y);
+}
 
 // save
 pic.write('picture/polygon.png', function(err) {
