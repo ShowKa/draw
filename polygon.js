@@ -21,7 +21,7 @@ let pic = gm(width, height, color);
 
 // coordinate
 let c = new Coordinate(width, height);
-let p = c.createPoit(0, 200);
+let p = c.createPoint(0, 200);
 
 // polygon
 for (let i = 1; i <= n; i++) {
