@@ -5,7 +5,7 @@ const gm = require('gm')
 const args = require("argv").run().targets;
 
 // lib
-const Coordinate = require("./lib/Coordinate");
+const Coordinate = require("./lib/Coordinate2D");
 
 // const 
 const width = 500;
