@@ -27,7 +27,9 @@ let wallPoint = me.createPoint(0, 0, -500);
 let normalVector = new Vector(0, 0, -1);
 let wall = me.createWall(normalVector, wallPoint);
 
-l(me._getAnotherCoodinatePoint(p1));
+let v1 = new Vector(1, 2, 3, 4);
+let v2 = new Vector(0.1, 0.2, 0.3, 0.4);
+l(v1.innerProduct(v2));
 
 // save
 pic.write('picture/3D.png', function(err) {
