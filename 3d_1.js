@@ -5,7 +5,7 @@ const args = require("argv").run().targets;
 
 // lib
 const gm = require('./lib/GmExtends');
-const Coordinate = require("./lib/Coordinate");
+const Coordinate3D = require("./lib/Coordinate3D");
 
 // const 
 const width = 500;
@@ -17,13 +17,13 @@ const color = args[0] ? args[0] : "white";
 // image
 let pic = new gm(width, height, color);
 
-let c = new Coordinate(0, 0, 0);
+let c = new Coordinate3D(width / 2, height / 2, 0);
+let p1 = c.createPoint(100, 0, 0);
+let p2 = c.createPoint(0, 100, 0);
+let p3 = c.createPoint(0, 0, 100);
+let p4 = c.createPoint(-50, -50, -50);
 
-let p1 = c.createPoint(100, 150, 200);
-
-c.rotate(Math.PI, Math.PI, Math.PI);
-
-l(p1);
+pic.stroke("red", 1).drawLineMutually(p1, p2, p3, p4);
 
 // save
 pic.write('picture/3D.png', function(err) {
